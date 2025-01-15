@@ -1,124 +1,72 @@
-<!DOCTYPE html>
+
+<!DOCTYPE html> 
 <html>
-    <head>
-        <title>Material</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <style type="text/css"></style>
-    </head>
 
-    <body>
-        <div data-role="page" data-theme="a">
-            <div data-role="header" data-position="fixed">
-                <a
-                    href="#"
-                    class="ui-btn-left"
-                    data-icon="arrow-l"
-                    data-theme="c"
-                    onclick="history.back(); return false"
-                    >Back</a
-                >
-                <h1>Material</h1>
-            </div>
+<head>
+	<title>Material</title> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <style type="text/css">
+        </style>
+</head> 
 
-            <div data-role="content">
-                <style>
-                    .jump {
-                        line-height: 1.5em;
-                    }
-                </style>
+<body> 
 
-                <script>
-                    function OpenUrl(url, type, choose) {
-                        if (navigator.userAgent.indexOf("Android") > -1) {
-                            prompt("#", "App.OpenUrl(\f" + url + "\f" + type + "\f" + choose);
-                            return false;
-                        } else return true;
-                    }
-                </script>
+<div data-role="page" data-theme="a">
 
-                <div align="center"><img src="Img/Material.png" width="100" /></div>
+	<div data-role="header" data-position="fixed">
+		<a href='#' class='ui-btn-left' data-icon='arrow-l' data-theme="c" onclick="history.back(); return false">Back</a> 
+		<h1>Material</h1>
+	</div>
 
-                <p>
-                    To use Material, you must first load the plugin at the top of your script using the
-                    <b>LoadPlugin</b> method like this:
-                </p>
+	<div data-role="content">	
+				
+		<style>
+			.jump { line-height:1.5em;  }
+		</style>
 
-                <div class="samp">&nbsp;app.LoadPlugin( "Material" )</div>
+		<script>
+		function OpenUrl( url,type,choose )
+		{
+			if( navigator.userAgent.indexOf("Android")>-1 ) {
+				prompt( "#", "App.OpenUrl(\f"+url+"\f"+type+"\f"+choose );
+				return false;
+			}
+			else return true;
+		}
+		</script>
+		
+		<div align="center">
+		    <a href="https://mui.com/x/" rel="noopener" target="_blank"><img width="100" height="100" src="https://mui.com/static/logo.svg" alt="MUI X logo"></a>
+		</div>
+		
+		<br>
+		
+		<div align="center">
+		<img alt="Zlib Licensed" src="https://img.shields.io/badge/license-Zlib-blue.svg">
+		<img alt="Version Badge" src="https://img.shields.io/badge/version-2.0.1-brightgreen.svg">
+		<img alt="DroidScript Plugin" src="https://img.shields.io/badge/platform-Android-blue.svg">
+		    
+		</div>
+		
+		<br>
+		
+		<p>To use Material, you must first load the plugin at the top of your script 
+		using the <b>LoadPlugin</b> method like this:</p>
+		
+		<div class="samp">&nbsp;app.LoadPlugin( "Material" )</div>
+		
+		<p>Then you can create an instance of the plugin object when you need it like this:</p>
+		
+		<div class="samp">&nbsp;app.ScaffoldMaterialTheme(mode, iconFill)</div>
+		 
+		<br>
+		<p>
+			<i>External Links: <a onclick="return OpenUrl(this.href)" target="_blank" href="https://github.com/oarabilekoore/material-design">Material Design GitHub</a></i>
+		</p>
+		
+	</div><!-- /content -->
+	
+</div><!-- /page -->
 
-                <p>Then you can create an instance of the plugin object when you need it like this:</p>
-
-                <div class="samp">&nbsp;plg = app.CreateMaterial()</div>
-
-                <br />
-                <p>Examples:</p>
-
-                <div
-                    data-role="collapsible"
-                    data-collapsed="true"
-                    data-mini="true"
-                    data-theme="a"
-                    data-content-theme="b"
-                >
-                    <h3>Example - Test</h3>
-                    <div id="examp1" style="font-size: 70%">
-                        app.LoadPlugin( "Material" )<br />
-                        <br />
-                        function OnStart()<br />
-                        {<br />
-                        &nbsp;&nbsp;lay = app.CreateLayout( "Linear", "VCenter,FillXY" )<br /><br />
-                        &nbsp;&nbsp;btn = app.AddButton( lay, "Press Me" )<br />
-                        &nbsp;&nbsp;btn.SetOnTouch( CallPlugin )<br />
-                        <b id="snip1" style="font-size: 100%">
-                            &nbsp;&nbsp;plg = app.CreateMaterial()<br /> </b
-                        ><br />
-                        &nbsp;&nbsp;app.AddLayout( lay )<br />
-                        }<br />
-                        <br />
-                        function CallPlugin()<br />
-                        {<br />
-                        &nbsp;&nbsp;alert( plg.Test("World") )<br />
-                        }<br /><br />
-                    </div>
-                    <div name="divCopy" align="right">
-                        <a
-                            href="#"
-                            data-role="button"
-                            data-mini="true"
-                            data-inline="true"
-                            onclick="copy(snip1)"
-                            >&nbsp;&nbsp;Copy&nbsp;&nbsp;</a
-                        >
-                        <a
-                            href="#"
-                            data-role="button"
-                            data-mini="true"
-                            data-inline="true"
-                            onclick="copy(examp1)"
-                            >Copy All</a
-                        >
-                        <a
-                            href="#"
-                            data-role="button"
-                            data-mini="true"
-                            data-inline="true"
-                            onclick="demo(examp1)"
-                            >&nbsp;&nbsp;&nbsp;Run&nbsp;&nbsp;&nbsp;</a
-                        >
-                    </div>
-                </div>
-
-                <br />
-                <p>
-                    <i
-                        >External Links:
-                        <a onclick="return OpenUrl(this.href)" target="_blank" href="http://droidscript.org"
-                            >droidscript.org</a
-                        ></i
-                    >
-                </p>
-            </div>
-            <!-- /content -->
-        </div>
-        <!-- /page -->
-    </body>
+</body>
 </html>

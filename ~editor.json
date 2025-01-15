@@ -1,0 +1,85 @@
+{
+    "recentFiles": [
+        {
+            "file": "Material-Plugin.js",
+            "filePath": "Material-Plugin/Material-Plugin.js",
+            "folderPath": "Material-Plugin",
+            "options": {
+                "open": false,
+                "type": "code-editor",
+                "splitView": false,
+                "name": "Material-Plugin.js",
+                "location": "Material-Plugin",
+                "filePath": "Material-Plugin/Material-Plugin.js",
+                "folderPath": "Material-Plugin",
+                "duplicateName": false,
+                "newFile": false
+            }
+        },
+        {
+            "file": "Material.java",
+            "filePath": "Material-Plugin/Material.java",
+            "folderPath": "Material-Plugin",
+            "options": {
+                "type": "code-editor",
+                "open": false,
+                "splitView": false,
+                "name": "Material.java",
+                "location": "Material-Plugin",
+                "filePath": "Material-Plugin/Material.java",
+                "folderPath": "Material-Plugin",
+                "duplicateName": false,
+                "newFile": false
+            }
+        },
+        {
+            "file": "Material.js",
+            "filePath": "Material-Plugin/Material.js",
+            "folderPath": "Material-Plugin",
+            "options": {
+                "open": true,
+                "type": "code-editor",
+                "splitView": false,
+                "name": "Material.js",
+                "location": "Material-Plugin",
+                "filePath": "Material-Plugin/Material.js",
+                "folderPath": "Material-Plugin",
+                "duplicateName": false,
+                "newFile": false
+            }
+        },
+        {
+            "file": "app.js",
+            "filePath": "app.js",
+            "folderPath": "project",
+            "options": {
+                "type": "code-editor",
+                "open": true,
+                "splitView": false,
+                "name": "app.js",
+                "location": "project",
+                "filePath": "app.js",
+                "folderPath": "project",
+                "duplicateName": false,
+                "newFile": false
+            }
+        },
+        {
+            "file": "ds_app.html?appName=Material-Plugin",
+            "filePath": "ds_app.html?appName=Material-Plugin",
+            "folderPath": "project",
+            "options": {
+                "type": "code-editor",
+                "open": true,
+                "splitView": false,
+                "name": "ds_app.html?appName=Material-Plugin",
+                "location": "project",
+                "filePath": "ds_app.html?appName=Material-Plugin",
+                "folderPath": "project",
+                "duplicateName": false,
+                "newFile": false
+            }
+        }
+    ],
+    "lastFileOpen": ""
+}
