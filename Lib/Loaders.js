@@ -5,7 +5,7 @@
  * @param {number} width = 0.8 
  * @param {string} type = "linear" | "linearintermediate"
  */
-muix.ProgressBar = function (parent, value = 40, width = 0.8, type = "linear") {
+muix.ProgressBar = function (value = 40, width = 0.8, parent) {
     let container = app.AddLayout(parent, "Absolute", "Horizontal,Left,FillXY");
     container.SetSize(width, 0.005);
     container.data.value = value;
@@ -46,9 +46,9 @@ muix.ProgressBar = function (parent, value = 40, width = 0.8, type = "linear") {
         
     }
     
-    function applyStyling() {
+    function applyStyling(type) {
         switch (type) {
-            case "linearintermediate":
+            case "intermediate":
                 container.SetBackColor(color.secondaryContainer);
                 container.data.type = 'linearintermediate'
                 bar.SetBackColor(color.primary);
@@ -65,11 +65,6 @@ muix.ProgressBar = function (parent, value = 40, width = 0.8, type = "linear") {
                 container.data.type = 'linear'
         }
     }
-
-    applyStyling() || globalThis.theme.subscribe(()=>{
-        container.SetBackColor(color.secondaryContainer);
-        bar.SetBackColor(color.primary);
-    })
     
     /**    
      * set the value of the progress-bar
@@ -96,6 +91,16 @@ muix.ProgressBar = function (parent, value = 40, width = 0.8, type = "linear") {
         }
     }
     
+    /**    
+     * Set the progress-bar type
+     * @param {} type 
+     */
+    container.SetBarType = function(type){
+        applyStyling(type) || globalThis.theme.subscribe(()=>{
+            container.SetBackColor(color.secondaryContainer);
+            bar.SetBackColor(color.primary);
+        })
+    }
     /**    
      * get the progress value
      */

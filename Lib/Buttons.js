@@ -7,8 +7,8 @@
  * @param {number} height
  * @param {string} type type of button to add
  */
-muix.Button = function (parent,text, width, height, type) {
-    let button = app.AddButton(parent, text, width, height, "Custom");
+muix.Button = function (text, type, parent) {
+    let button = app.AddButton(parent, text, -1, -1, "Custom");
     const radius = 20;
 
     function applyStyling() {
@@ -58,45 +58,40 @@ muix.Button = function (parent,text, width, height, type) {
  * Add an icon button to your view.
  * @param {Ds-Layout} parent
  * @param {string} icon
- * @param {string} type filled | tonal | clear
- * @param {string} iconFill sharp | round | outlined | two-toned
+ * @param {string} fill type filled | tonal | clear
  */
-muix.IconButton = function (parent, icon, type, iconFill) {
-    let btn = app.AddButton(parent, icon, null, null, "Custom");
+muix.IconButton = function (icon, type, parent) {
+    let icon_name = icon.toLocaleLowerCase()
+    let icon_type = type.toLocaleLowerCase()
+    let btn = app.AddButton(parent, icon_name, null, null, "Custom");
     btn.SetSize(48, 48, "dp");
     btn.SetTextSize(24, "dp");
 
-    if (iconFill) {
-        btn.SetFontFile(returnProperIconFill());
-    } else {
-        btn.SetFontFile(globalThis.iconFill);
-    }
-
-    function returnProperIconFill() {
+    function setProperIconStyle(iconFill) {
         switch (iconFill) {
             case "sharp":
-                return prodFolder + "./Src/MaterialIcons-Sharp.otf";
+                btn.SetFontFile(prodFolder + "./Src/MaterialIcons-Sharp.otf");
                 break;
 
             case "round":
-                return prodFolder + "./Src/MaterialIcons-Round.otf";
+                btn.SetFontFile(prodFolder + "./Src/MaterialIcons-Round.otf");
                 break;
 
             case "outlined":
-                return prodFolder + "./Src/MaterialIcons-Outlined.otf";
+                btn.SetFontFile(prodFolder + "Src/MaterialIcons-Outlined.otf");
                 break;
 
             case "two-toned":
-                return prodFolder + "./Src/MaterialIcons-TwoToned.otf";
+                btn.SetFontFile(prodFolder + "./Src/MaterialIcons-TwoToned.otf");
                 break;
 
             default:
-                return prodFolder + "./Src/MaterialIcons-Regular.ttf";
+                btn.SetFontFile(prodFolder + "./Src/MaterialIcons-Regular.ttf");
         }
     }
 
     function applyStyling() {
-        switch (type) {
+        switch (icon_type) {
             case "filled":
                 btn.SetStyle(color.primary, color.primary, 24, null, null, 0);
                 btn.SetTextColor(color.surfaceContainerHighest);
@@ -123,6 +118,15 @@ muix.IconButton = function (parent, icon, type, iconFill) {
     globalThis.theme.subscribe(() => {
         applyStyling();
     });
+    
+    /**    
+     * Set the icon style.
+     * @param {string} iconStyle 
+     */
+    btn.SetIconStyle = function(iconStyle){
+        if (iconStyle) setProperIconStyle(iconStyle);
+        else Log`iconFill Defined Is Null or Undefined.`
+    }
     return btn;
 }
 
@@ -131,7 +135,7 @@ muix.IconButton = function (parent, icon, type, iconFill) {
  * @param {Ds-Layout} parent
  * @param {boolean} isChecked
  */
-muix.RadioButton = function (parent, isChecked = false) {
+muix.RadioButton = function (isChecked = false, parent) {
     let isCheckedStatus = signal(isChecked);
     let icon;
 
@@ -170,7 +174,7 @@ muix.RadioButton = function (parent, isChecked = false) {
  * @param {Ds-Layout} parent
  * @param {boolean} isChecked
  */
-muix.CheckBox = function (parent, isChecked = false) {
+muix.CheckBox = function (isChecked = false, parent) {
     let isCheckedStatus = signal(isChecked);
     let icon;
 
@@ -216,7 +220,7 @@ muix.CheckBox = function (parent, isChecked = false) {
  * @param {string} icon
  * @param {string} size small | large | medium
  */
-muix.Fab = function (parent, icon = "edit", size) {
+muix.Fab = function (icon = "edit", size, parent) {
     let fab = app.AddButton(parent, icon, null, null, "Custom,Lego");
     fab.SetFontFile(globalThis.iconFill);
 

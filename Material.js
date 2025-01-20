@@ -8,15 +8,17 @@
                                                               \ \/ /
                                                                \  /
    Under The ZLib License.                                      \/
-   @2024, Built With Love From Botswana.                    *********
+   @2024 - Present, Built With Love From Botswana.          *********
 ********************************************************************/
 
 
 let pluginFolder = app.GetPrivateFolder("Plugins") + "/material/";
-let debugFolder = app.GetAppPath().endsWith("/Material");
+let debugFolder = app.GetAppPath().endsWith("/Material Plugin");
 let prodFolder = debugFolder ? "" : pluginFolder;
 
-const muix = Object()
+const muix = {}
+const pluginVersion = '2.0.1';
+
 app.LoadScript('Lib/Helpers.js')
 app.LoadScript('Lib/Buttons.js')
 app.LoadScript('Lib/Loaders.js')
@@ -62,8 +64,8 @@ app.ScaffoldMaterialTheme = function (theme = "light", iconFill = "outlined") {
             globalThis.iconFill = prodFolder + "Src/MaterialIcons-Regular.ttf";
     }
     
-    function applyNavigationalColors(){
-        const statusBarColor = fileObject?.schemes?.dark?.surface;
+    function applyNavigationalColors(){        
+    const statusBarColor = fileObject?.schemes?.dark?.surface;
         
         if (statusBarColor === null || statusBarColor === undefined) {
            Log`The status bar color is not defined. Please check your
@@ -95,14 +97,29 @@ app.ScaffoldMaterialTheme = function (theme = "light", iconFill = "outlined") {
  * @param {string} theme
  */
 muix.SetTheme = function (theme) {
+    
     if (globalThis.usingDefault) {
         Log(`You are not able to change themes because
         you did not set-up the app theme file.`, 'https://droidscript.org')
         return;
     }
-    app.Hide(), globalThis.theme.value = theme, 
+    app.Hide(), globalThis.theme.value = theme.toLocaleLowerCase();
     app.Show();
 };
+
+/**
+ * Get the value of the current theme
+ */
+muix.GetTheme = function () {
+    return globalThis.theme.value;
+}
+
+/**
+ * Get the version of the plugin
+ */
+muix.GetVersion = function () {
+    return pluginVersion;
+}
 
 /**
  * Create a DroidScript Layout
@@ -121,32 +138,3 @@ muix.Layout = function (type, options, properties) {
 
     return layout;
 }
-
-
-// app.LoadPlugin("JavaCompiler");
-
-// // Create a temporary folder for the output
-// const outputFolder = app.GetTempFolder() + "/classes";
-// app.MakeFolder(outputFolder);
-
-// // Initialize the JavaCompiler object
-// const jac = app.CreateJavaCompiler();
-// jac.SetOptions(["-source", "8", "-target", "8"]);
-// jac.AddJavaFile("Material.java"); // Add the Java file
-// jac.SetOutputFolder(''); // Set the output folder
-
-// // Compile the Java file
-// const result = jac.Compile();
-// if (result) {
-//     // Generate the JAR file
-//     jac.GenerateJarFile();
-// } else {
-//     // Show diagnostic messages
-//     console.log("Compilation failed:\n" + jac.GetDiagnosticMessages());
-// }
-
-if (pluginFolder){
-    _CreatePlugin('org.droidscript.plugins.Material')
-}
-
-

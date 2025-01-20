@@ -5,7 +5,7 @@
  * @param {string} alignment = 'Bottom' Top or Bottom
  * @param {string} endonmentButtonName = 'Okay' Name of the closing button
  */
-muix.Snackbar = function(text = '', width = 0.85, alignment = 'Bottom', endonmentButtonName = 'Okay'){
+muix.Snackbar = function(text = '', width = 0.85, alignment = 'Bottom'){
   
     let container = app.CreateLayout('Linear', alignment + ',FillXY,TouchThrough,Center');
     let body = app.CreateLayout('Card');
@@ -29,7 +29,7 @@ muix.Snackbar = function(text = '', width = 0.85, alignment = 'Bottom', endonmen
     snackText.SetTextSize(16);
     box.AddChild(snackText);
     
-    let snackButton = app.CreateText(endonmentButtonName, null, null, "VCenter,FillXY,AutoScale,Wrap,Right");
+    let snackButton = app.CreateText('', null, null, "VCenter,FillXY,AutoScale,Wrap,Right");
     snackButton.SetMargins(null, null, 16, null, 'dp');
     snackButton.SetTextSize(16);
     snackButton.SetOnTouchDown(callClosingFn)
@@ -80,10 +80,17 @@ muix.Snackbar = function(text = '', width = 0.85, alignment = 'Bottom', endonmen
          * Set the timeout for the snackbar to close
          * @param {number} time 
          */
-        set Timeout(time){
+        SetTimeout(time){
             container.data.timeout = time;
         },
         
+        /**        
+         * Set the snackbar's button text
+         * @param {} text 
+         */
+        SetEndornmentText(text){
+            snackButton.SetText(text)
+        },
         /**        
          * Show the snackbar
          */
