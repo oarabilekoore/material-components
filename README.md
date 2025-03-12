@@ -15,8 +15,13 @@
 
 Material Design is a DroidScript plugin for building Material 3 Themed Applications.
 
-> **TLDR:** This plugin @v1.00 is under maintenance mode.
+> **TLDR:** This plugin is no longer maintained.
 
-> **TLDR:** There is an active re-write of this plugin, the next version will
-> break everything in version 1.0, there will be no compatability at all,
-> so it is better to adopt this fresh ground up re-write.
+## What's the road forward ?
+
+I will like to thank everyone who was involved in the development of this plugin - The DroidScript Community over at Discord.
+
+The road forward is to adopt alternatives, I will recommend these : 
+
+1. [F7Wrapper by JohnPrise](https://ds.justplayer.de/projects/f7wrapper)
+2. [Enjin UI plugin by D.S Team](https://enjine-io.github.io/ui/docs/ui-v0.31/ui.html)
